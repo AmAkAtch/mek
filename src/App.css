@@ -1,0 +1,39 @@
+.grid-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 200vh;
+  height: 200vh;
+}
+
+.grid-box {
+  background-color: red;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.grid-box:hover {
+  transform: scale(1.01);
+  cursor: pointer;
+}
+
+.grid-box.isSelected {
+  background-color: white;
+}
+
+.complete-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  width: 95px;
+}
+
+.main-app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
