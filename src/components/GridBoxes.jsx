@@ -5,7 +5,7 @@ import React, { useState } from "react";
 //display them in order of the click
 //reset everything on button click
 
-const GridBoxes = () => {
+const GridBoxes = ({ state }) => {
   const [isSelected, setIsSelected] = useState(false);
   const [clickCount, setClickCount] = useState(0);
 

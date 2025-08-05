@@ -4,7 +4,7 @@ import GridApp from "./components/GridApp.jsx";
 function App() {
   return (
     <div className="main-app">
-      <GridApp className="grid-app" />
+      <GridApp />
     </div>
   );
 }
