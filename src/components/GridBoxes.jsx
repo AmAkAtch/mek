@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 //count will keep onincreasing, we want to increase it only once on first click
 //separate each of the boxes
 //display them in order of the click
 //reset everything on button click
 
-const GridBoxes = ({ state }) => {
+const GridBoxes = ({ reset }) => {
   const [isSelected, setIsSelected] = useState(false);
-  const [clickCount, setClickCount] = useState(0);
+  const [clickCount, setClickCount] = useState(1);
+
+  useEffect(() => {
+    setIsSelected(false);
+    setClickCount(1);
+  }, [reset]);
 
   const handleBoxClick = () => {
     setClickCount(clickCount + 1);

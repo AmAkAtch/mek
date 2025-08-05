@@ -3,16 +3,16 @@ import { useState } from "react";
 import GridBoxes from "./GridBoxes.jsx";
 
 const GridApp = () => {
-  const [reset, setReset] = useState(false);
+  const [reset, setReset] = useState(0);
 
   const handleResetClick = () => {
-    setReset(true);
+    setReset((prev) => prev + 1);
   };
 
   return (
     <div className="grid-app">
       <h2>Grid app</h2>
-      <GridBoxes />
+      <GridBoxes reset={reset} />
       <button onClick={handleResetClick}>Reset</button>
     </div>
   );
