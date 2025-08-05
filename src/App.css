@@ -37,6 +37,10 @@
   background-color: white;
 }
 
+.grid-box.isSelected p {
+  color: black;
+}
+
 .complete-grid {
   display: flex;
   flex-wrap: wrap;

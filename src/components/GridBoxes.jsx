@@ -1,71 +1,34 @@
 import React, { useEffect, useState } from "react";
 
-//count will keep onincreasing, we want to increase it only once on first click
-//separate each of the boxes
-//display them in order of the click
-//reset everything on button click
-
 const GridBoxes = ({ reset }) => {
-  const [isSelected, setIsSelected] = useState(false);
   const [clickCount, setClickCount] = useState(1);
+  const [gridArray, setGridArray] = useState(Array(9).fill(null));
 
   useEffect(() => {
-    setIsSelected(false);
     setClickCount(1);
+    setGridArray(Array(9).fill(null));
   }, [reset]);
 
-  const handleBoxClick = () => {
-    setClickCount(clickCount + 1);
-    setIsSelected(true);
+  const handleBoxClick = (index) => {
+    if (gridArray[index] === null) {
+      const newGridArray = [...gridArray];
+      newGridArray[index] = clickCount;
+      setGridArray(newGridArray);
+      setClickCount(clickCount + 1);
+    }
   };
 
   return (
     <div className="complete-grid">
-      <div
-        className={`grid-box ${isSelected ? "isSelected" : ""}`}
-        onClick={() => handleBoxClick(clickCount)}
-        isSelected={isSelected}
-      ></div>
-      <div
-        className={`grid-box ${isSelected ? "isSelected" : ""}`}
-        onClick={handleBoxClick}
-        isSelected={isSelected}
-      ></div>
-      <div
-        className={`grid-box ${isSelected ? "isSelected" : ""}`}
-        onClick={handleBoxClick}
-        isSelected={isSelected}
-      ></div>
-      <div
-        className={`grid-box ${isSelected ? "isSelected" : ""}`}
-        onClick={handleBoxClick}
-        isSelected={isSelected}
-      ></div>
-      <div
-        className={`grid-box ${isSelected ? "isSelected" : ""}`}
-        onClick={handleBoxClick}
-        isSelected={isSelected}
-      ></div>
-      <div
-        className={`grid-box ${isSelected ? "isSelected" : ""}`}
-        onClick={handleBoxClick}
-        isSelected={isSelected}
-      ></div>
-      <div
-        className={`grid-box ${isSelected ? "isSelected" : ""}`}
-        onClick={handleBoxClick}
-        isSelected={isSelected}
-      ></div>
-      <div
-        className={`grid-box ${isSelected ? "isSelected" : ""}`}
-        onClick={handleBoxClick}
-        isSelected={isSelected}
-      ></div>
-      <div
-        className={`grid-box ${isSelected ? "isSelected" : ""}`}
-        onClick={handleBoxClick}
-        isSelected={isSelected}
-      ></div>
+      {gridArray.map((number, index) => (
+        <div
+          key={index}
+          className={`grid-box ${number !== null ? "isSelected" : ""}`}
+          onClick={() => handleBoxClick(index)}
+        >
+          <p>{number !== null ? number : ""}</p>
+        </div>
+      ))}
     </div>
   );
 };
